@@ -14,11 +14,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "21" # Adjust the Node.js version as needed
 
       - name: Install dependencies
-        uses: bahmutov/pnpm-install@v1
+        run: |
+          npm install -g pnpm
+          pnpm install
 
       - name: Build project
         run: pnpm run build
